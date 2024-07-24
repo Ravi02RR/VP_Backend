@@ -4,8 +4,8 @@ import Env from "../config/confo.js";
 
 
 
+//mongoDb connection
 
-const URI = "mongodb+srv://ravi848101mnb:vppost@cluster0.dcrudcf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const connectDB = async () => {
     try {
         mongoose.set('strictQuery', false);
