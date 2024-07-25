@@ -1,14 +1,30 @@
 import connectDB from "./db/index.js";
 import dotenv from 'dotenv';
+import { app } from "./app.js";
+import Env from "./config/confo.js";
+//path to env
 dotenv.config({
     path: '../env',
 });
-
-connectDB();
-
+console.log(Env.PORT)
 
 
-//database is always in another server
+connectDB().then(() => {
+    app.on("error", (error) => {
+        console.log(error)
+        process.exit(1)
+    })
+    app.listen(Env.PORT, () => {
+        console.log(`Server is running on port ${Env.PORT}`)
+    })
+
+}).catch((err) => {
+    console.log("connection failed ", err)
+});
+
+
+
+
 // (async () => {
 //     try {
 //         await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`).then(() => {

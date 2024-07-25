@@ -6,7 +6,9 @@ import Env from "../config/confo.js";
 
 //mongoDb connection
 
+
 const connectDB = async () => {
+    console.log("MongoDb connection");
     try {
         mongoose.set('strictQuery', false);
 
@@ -17,7 +19,7 @@ const connectDB = async () => {
 
 
     } catch (error) {
-        console.log("MongoDb connection Fail",error);
+        console.log("MongoDb connection Fail", error);
         process.exit(1);
     }
 };
